@@ -10,7 +10,7 @@ def getTitleFromIndex (index):
 def getIndexFromTitle (title):
 	return df[df.title == title]["index"].values[0]
 
-df = pd.read_csv ("movie_dataset.csv")
+df = pd.read_csv ("movieDataset.csv")
 
 features = ['keywords','cast','genres','director']
 
@@ -23,7 +23,7 @@ def combineFeatures(row):
 	except:
 		print ("Error:", row)	
 
-df["combined_features"] = df.apply (combineFeatures,axis=1)
+df["combinedFeatures"] = df.apply (combineFeatures, axis = 1 )
 
 cv = CountVectorizer()
 
@@ -34,7 +34,7 @@ movieUserLikes = "Avatar"
 
 movieIndex = getIndexFromTitle (movieUserLikes)
 
-similarMovies =  list (enumerate (cosineSim[movieIndex]) )
+similarMovies =  list (enumerate(cosineSim[movieIndex]))
 
 sortedSimilarMovies = sorted (similarMovies, key=lambda x : x[1], reverse = True)
 
